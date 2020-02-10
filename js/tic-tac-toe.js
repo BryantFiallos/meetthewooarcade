@@ -13,6 +13,10 @@ const winningConditions = [
 let board;
 let turn;
 let win;
+let xWins = 0;
+let oWins = 0;
+let ties = 0;
+let first = "X"
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
 const squares = Array.from(document.querySelectorAll("#board div"));
 const message = document.querySelector("h2");
@@ -20,6 +24,9 @@ const message = document.querySelector("h2");
 window.onload = init;
 document.getElementById("board").onclick = takeTurn;
 document.getElementById("reset-button").onclick = init;
+document.getElementById("xFirst").onclick = xFirst;
+document.getElementById("oFirst").onclick = oFirst;
+document.getElementById("reset-scoreboard").onclick = resetScoreboard;
 ///////////////////// FUNCTIONS /////////////////////////////////////
 function init() {
   board = [
@@ -29,6 +36,13 @@ function init() {
   ];
   turn = "X";
   win = null;
+
+if (first === "X") {
+  turn = "X"
+}
+else if (first === "O") {
+  turn = "O"
+}
 
   render();
 }
@@ -52,6 +66,10 @@ function takeTurn(e) {
       board[index] = turn;
       turn = turn === "X" ? "O" : "X";
       win = getWinner();
+      if (win === "T") {
+        ties++;
+        document.getElementById("tScore").innerHTML = ties;
+      }
 
       render();
     }
@@ -68,8 +86,48 @@ function getWinner() {
       board[condition[1]] === board[condition[2]]
     ) {
       winner = board[condition[0]];
+      if (winner === "X") {
+        xWins++;
+        document.getElementById("xScore").innerHTML = xWins;
+        playYuh();
+      }
+      else if (winner === "O") {
+        oWins++;
+        document.getElementById("oScore").innerHTML = oWins;
+        playYuh();
+      }
+
     }
+
   });
 
   return winner ? winner : board.includes("") ? null : "T";
+}
+
+function xFirst(){
+  init();
+  document.getElementById("turn").innerHTML = "Turn: X";
+  turn = "X";
+  first = "X"
+
+}
+function oFirst(){
+  init();
+  document.getElementById("turn").innerHTML = "Turn: O";
+  turn = "O";
+  first = "O"
+}
+
+function playYuh() {
+  document.getElementById("myAudio").play();
+}
+
+function resetScoreboard() {
+    xWins = 0;
+    oWins = 0;
+    ties = 0;
+
+    document.getElementById("xScore").innerHTML = xWins;
+    document.getElementById("tScore").innerHTML = ties;
+    document.getElementById("oScore").innerHTML = oWins;
 }
