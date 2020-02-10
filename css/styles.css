@@ -1,0 +1,132 @@
+body {
+  text-align: center;
+  color: white;
+  font-family: "Roboto", monospace;
+  background-color: blue;
+}
+
+
+h1 {
+  margin: 0 auto;
+  font-family: "Major Mono Display", monospace;
+  font-size: 48px;
+  margin: 2%;
+}
+
+
+h2 {
+  font-size: 36px;
+  font-weight: lighter;
+  margin: 2%;
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.column {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+
+.wrap {
+  flex-wrap: wrap;
+  height: 456px;
+  width: 456px;
+}
+
+
+.square {
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  font-size: 96px;
+  height: 150px;
+  line-height: 150px;
+  user-select: none;
+  width: 150px;
+  border-color: white;
+}
+
+
+.square:hover {
+  background-color: white;
+  cursor: pointer;
+  color: black;
+}
+
+.first {
+  border: 1px solid;
+  font-size: 46px;
+  height: 90px;
+  line-height: 100px;
+  user-select: none;
+  width: 90px;
+  margin: 5%;
+}
+
+.first:hover {
+    background-color: white;
+    cursor: pointer;
+    color: black;
+}
+
+#reset-button {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size: 21px;
+  line-height: 55px;
+  margin: 1%;
+  text-align: center;
+  width: 456px;
+}
+
+
+#reset-button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+#turn {
+  font-size: 70px;
+}
+
+#reset-scoreboard {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size: 21px;
+  line-height: 55px;
+  margin: 0%;
+  text-align: center;
+  width: 456px;
+}
+
+#reset-scoreboard:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.scoreboard {
+  border-collapse: collapse;
+  margin: 2%;
+  border-color: white;
+}
+
+td {
+  border-color: white;
+}
+
+p {
+  background-color: black;
+}
+table, td, th {
+  border: 1px solid white;
+}
