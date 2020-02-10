@@ -10,29 +10,36 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
     <script defer src="js/app.js"></script>
 
-    <title>APCSP Tic-Tac-Toe</title>
+    <title>Tic-Tac-Toe</title>
   </head>
   <body>
-    <table class="header">
-          <thead>
-              <tr>
-                  <th><a href="index.html">Home</a></th>
-                  <th><a href="tic-tac-toe.html">Tic-Tac-Toe</a></th>
-                  <th><a href="ultimate-tic-tac-toe.html">Ultimate Tic-Tac-Toe</a></th>
-                  <th><a href="connect4.html">Connect Four</a></th>
-      </table>
+    <audio id="myAudio">
+      <source src="audio/yuh.mp3" type="audio/mpeg">
+    </audio>
     <h1>tic | tac | toe</h1>
 
     <div class="container column">
-      <h2>Turn: X</h2>
 
-<table>
+      <h3>Who's going first?</h3>
+      <div class="container">
+        <div class="first" id="xFirst">X</div>
+        <div class="first" id="oFirst">O</div>
+      </div>
+
+<table class="scoreboard">
   <tr>
     <td># of X Wins:</td>
+    <td># of Ties:</td>
     <td># Of O Wins:</td>
   </tr>
+  <tr>
+    <td id="xScore">0</td>
+    <td id="tScore">0</td>
+    <td id="oScore">0</td>
+  </tr>
 </table>
-
+<div id="reset-scoreboard">Reset Scoreboard</div>
+<h2 id="turn">Turn: X</h2>
       <div class="container wrap" id="board">
         <div class="square"></div>
         <div class="square"></div>
@@ -47,5 +54,6 @@
 
       <div id="reset-button">Play Again!</div>
     </div>
+    <p>* To remove music right click on the tab and select "mute site" *</p>
   </body>
 </html>
