@@ -2,7 +2,7 @@ body {
   text-align: center;
   color: white;
   font-family: "Roboto", monospace;
-  background-color: blue;
+  background-color: green;
 }
 
 
@@ -73,6 +73,26 @@ h2 {
     background-color: white;
     cursor: pointer;
     color: black;
+}
+
+.mini-square {
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  font-size: 30px;
+  height: 48px;
+  line-height: 48px;
+  user-select: none;
+  width: 48px;
+  border-color: black;
+}
+
+.mini-square:hover {
+  background-color: darkgreen;
+}
+
+.miniwrap {
+  flex-wrap: wrap;
+  height: 150px;
+  width: 150px;
 }
 
 #reset-button {
