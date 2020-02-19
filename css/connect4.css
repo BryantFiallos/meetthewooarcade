@@ -1,0 +1,23 @@
+body {
+  background: green;
+}
+
+.dot {
+  height: 100px;
+  width: 100px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.wrap {
+  flex-wrap: wrap;
+  height: 750px;
+  width: 750px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
