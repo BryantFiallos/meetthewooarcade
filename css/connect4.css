@@ -2,6 +2,17 @@ body {
   background: green;
 }
 
+td {
+  border-color: white;
+}
+
+p {
+  background-color: black;
+}
+table, td, th {
+  border: 1px solid white;
+}
+
 .dot {
   height: 100px;
   width: 100px;
@@ -17,7 +28,5 @@ body {
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+align-items: center;
 }
