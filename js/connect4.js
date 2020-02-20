@@ -4,11 +4,12 @@
 let board;
 let turn;
 let win;
-let redWins;
-let yellowWins;
-let ties;
+let redWins = 0;
+let yellowWins = 0;
+let ties = 0;
 let first;
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
+const dots = Array.from(document.querySelectorAll("#board div"));
 
 ///////////////////// EVENT LISTENERS ///////////////////////////////
 window.onload = init;
@@ -25,17 +26,26 @@ function init() {
     "", "", "", "", "", "", ""
     "", "", "", "", "", "", ""
   ];
+  turn = "Red"
+  win = null
 
   render();
 }
 
 
+function render() {
+  board.forEach(function(mark, index) {
+    dots[index].textContent = mark;
+  });
 
+  message.textContent =
+    win === "T" ? "It's a tie!" : win ? `${win} wins!` : `Turn: ${turn}`;
+}
 
 function takeTurn(e) {
   if (!win) {
-    let index = squares.findIndex(function(square) {
-      return square === e.target;
+    let index = dots.findIndex(function(dot) {
+      return dot === e.target;
     });
 
     if (board[index] === "") {
