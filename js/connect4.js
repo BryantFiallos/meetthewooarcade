@@ -1,5 +1,10 @@
 ///////////////////// CONSTANTS /////////////////////////////////////
+const winningConditions = [
+  [35, 28, 21, 14]
+  [28, 21, 14, 7]
+  
 
+]
 ///////////////////// APP STATE (VARIABLES) /////////////////////////
 let board;
 let turn;
@@ -14,7 +19,7 @@ const message = document.querySelector("h2");
 ///////////////////// EVENT LISTENERS ///////////////////////////////
 window.onload = init;
 document.getElementById("board").onclick = takeTurn;
-document.getElementById("reset-button").onclick = init;
+
 ///////////////////// FUNCTIONS /////////////////////////////////////
 
 function init() {
@@ -60,4 +65,9 @@ function takeTurn(e) {
       render();
     }
   }
+}
+
+function getWinner() {
+  let winner = null;
+
 }
