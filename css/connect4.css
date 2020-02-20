@@ -31,3 +31,8 @@ table, td, th {
 .container {
 align-items: center;
 }
+
+#board {
+  background-color: blue;
+  display: inline-block;
+}
