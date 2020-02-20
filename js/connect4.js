@@ -1,6 +1,6 @@
 ///////////////////// CONSTANTS /////////////////////////////////////
 const winningConditions = [
-  [35, 28, 21, 14]
+  [35, 28, 21, 14],
   [28, 21, 14, 7]
 
 
@@ -74,7 +74,8 @@ function getWinner() {
     if (
       board[condition[0]] &&
       board[condition[0]] === board[condition[1]] &&
-      board[conition[1]] === board[condition[2]]
+      board[condition[1]] === board[condition[2]] &&
+      board[condition[2]] === board[condition[3]]
     ) {
       winner = board[condition[0]];
     }
