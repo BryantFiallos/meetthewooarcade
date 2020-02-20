@@ -4,6 +4,9 @@
 let board;
 let turn;
 let win;
+let redWins;
+let yellowWins;
+let ties;
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
 
 ///////////////////// EVENT LISTENERS ///////////////////////////////
