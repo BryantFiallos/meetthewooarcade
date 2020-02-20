@@ -2,7 +2,8 @@ body {
   text-align: center;
   color: white;
   font-family: "Roboto", monospace;
-  background-color: green;
+  background-image: url("../images/vhs.gif");
+  background-size:cover;
 }
 
 
