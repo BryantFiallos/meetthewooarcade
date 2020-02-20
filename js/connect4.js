@@ -2,7 +2,7 @@
 const winningConditions = [
   [35, 28, 21, 14]
   [28, 21, 14, 7]
-  
+
 
 ]
 ///////////////////// APP STATE (VARIABLES) /////////////////////////
@@ -70,4 +70,15 @@ function takeTurn(e) {
 function getWinner() {
   let winner = null;
 
+  winningConditions.forEach(function(condition, index) {
+    if (
+      board[condition[0]] &&
+      board[condition[0]] === board[condition[1]] &&
+      board[conition[1]] === board[condition[2]]
+    ) {
+      winner = board[condition[0]];
+    }
+  });
+
+  return winner;
 }
