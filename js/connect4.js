@@ -129,7 +129,7 @@ function takeTurn(e) {
 
     if (board[index] === "") {
 
-      while (board[index + 7] == "") {
+      while (board[index + 7] === "") {
         let i = index + 7;
         document.getElementById("dot" + i + "").classList.add(turn);
         board[i] = turn;
@@ -138,16 +138,16 @@ function takeTurn(e) {
         index = i;
 
       }
-      if (board[index] == "") {
+      if (board[index] === "") {
         document.getElementById("dot" + index + "").classList.add(turn);
         board[index] = turn;
 
       }
 
       }
-      else if (board[index] != "") {
+      else if (board[index] !== "") {
         if (board[row1] === "") {
-          while (board[row1 + 7] == "") {
+          while (board[row1 + 7] === "") {
             let i = row1 + 7;
             document.getElementById("dot" + i + "").classList.add(turn);
             board[i] = turn;
@@ -156,13 +156,19 @@ function takeTurn(e) {
             row1 = i;
 
           }
-          if (board[row1] == "") {
+          if (board[row1] === "") {
             document.getElementById("dot" + row1 + "").classList.add(turn);
             board[row1] = turn;
 
           }
+
         }
       }
+      else if (board[row1] !== "") {
+        alert("choose");
+
+      }
+
       }
 
       turn = turn === "Red" ? "Yellow" : "Red";
