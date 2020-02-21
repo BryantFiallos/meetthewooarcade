@@ -125,9 +125,15 @@ function takeTurn(e) {
     });
 
     if (board[index] === "") {
+
+      for (i = index; i <= 41; i += 7) {
+
+        document.getElementById("dot" + index + "").classList.add(turn)
+      }
+
       board[index] = turn;
 
-      document.getElementById("dot" + index + "").classList.add(turn)
+
       turn = turn === "Red" ? "Yellow" : "Red";
       win = getWinner();
       if (win === "T") {
