@@ -63,6 +63,7 @@ function takeTurn(e) {
     });
 
     if (board[index] === "") {
+      document.getElementById("dot" + index + "").style.backgroundcolor = turn;
       board[index] = turn;
       turn = turn === "X" ? "O" : "X";
       win = getWinner();
