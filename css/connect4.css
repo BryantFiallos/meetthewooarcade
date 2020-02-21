@@ -1,5 +1,7 @@
+
+
 body {
-  background: green;
+  background-color: periwinkle;
   text-align: center;
 }
 
@@ -14,12 +16,17 @@ table, td, th {
   border: 1px solid white;
 }
 
+div {
+  text
+}
+
 .dot {
   height: 100px;
   width: 100px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
+  user-select: none;
 }
 
 .wrap {
