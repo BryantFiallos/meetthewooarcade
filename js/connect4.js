@@ -124,6 +124,9 @@ function takeTurn(e) {
       return dot === e.target;
     });
 
+
+    let row1 = index % 7;
+
     if (board[index] === "") {
 
       while (board[index + 7] == "") {
@@ -140,11 +143,27 @@ function takeTurn(e) {
         board[index] = turn;
 
       }
+
+      }
+      else if (board[index] != "") {
+        if (board[row1] === "") {
+          while (board[row1 + 7] == "") {
+            let i = row1 + 7;
+            document.getElementById("dot" + i + "").classList.add(turn);
+            board[i] = turn;
+            document.getElementById("dot" + row1 + "").classList.remove(turn);
+            board[row1] = "";
+            row1 = i;
+
+          }
+          if (board[row1] == "") {
+            document.getElementById("dot" + row1 + "").classList.add(turn);
+            board[row1] = turn;
+
+          }
+        }
       }
       }
-
-
-
 
       turn = turn === "Red" ? "Yellow" : "Red";
       win = getWinner();
@@ -172,5 +191,5 @@ function getWinner() {
     }
   });
 
-  return winner;
+  return winner ? winner : board.includes("") ? null : "T";
 }
