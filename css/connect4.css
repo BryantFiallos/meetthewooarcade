@@ -32,6 +32,14 @@ table, td, th {
 align-items: center;
 }
 
+.Red {
+  background-color: red;
+}
+
+.Yellow {
+  background-color: yellow;
+}
+
 #board {
   background-color: blue;
   display: inline-block;
