@@ -6,18 +6,29 @@ body {
 }
 
 td {
-  border-color: white;
+  border-color: black;
 }
 
 p {
   background-color: black;
 }
 table, td, th {
-  border: 1px solid white;
+  border: 1px solid black;
 }
 
 div {
   text margin: 0px;
+}
+
+td {
+  border-color: black;
+}
+
+p {
+  background-color: black;
+}
+table, td, th {
+  border: 1px solid black;
 }
 
 .dot {
@@ -30,9 +41,12 @@ div {
   text-align: center;
   vertical-align: middle;
   line-height: 100px
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10+ and Edge */
-  user-select: none; /* Standard syntax */
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
 
 }
 
@@ -46,6 +60,18 @@ div {
 align-items: center;
 }
 
+.containerv2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.columnv2 {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
 .Red {
   background-color: red;
   color: red;
@@ -56,10 +82,82 @@ align-items: center;
   color: yellow;
 }
 
+.first {
+  border: 1px solid;
+  font-size: 46px;
+  height: 90px;
+  line-height: 100px;
+  user-select: none;
+  width: 90px;
+  margin: 5%;
+  border-radius: 50%;
+}
+
+.first:hover {
+    background-color: white;
+    cursor: pointer;
+    color: black;
+}
+
+.scoreboard {
+  border-collapse: collapse;
+  margin: 2%;
+  border-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #board {
   background-color: blue;
   display: inline-block;
   vertical-align: middle;
   line-height: 123px;
   user-select: none;
+}
+
+#yellowFirst {
+  background-color: yellow;
+}
+
+#redFirst {
+  background-color: red;
+}
+
+#reset-button {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size: 21px;
+  line-height: 55px;
+  margin: 1%;
+  text-align: center;
+  width: 456px;
+}
+
+#reset-button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+#turn {
+  font-size: 70px;
+}
+
+#reset-scoreboard {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size: 21px;
+  line-height: 55px;
+  margin: 0%;
+  text-align: center;
+  width: 456px;
+}
+
+#reset-scoreboard:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
