@@ -119,6 +119,10 @@ function render() {
 }
 
 function takeTurn(e) {
+
+  if (e.target.id == "board") {
+    return false;
+  }
   if (!win) {
     let index = dots.findIndex(function(dot) {
       return dot === e.target;
@@ -164,8 +168,8 @@ function takeTurn(e) {
 
         }
       }
-      else if (board[row1] !== "") {
-        alert("choose");
+      if (board[row1] !== "") {
+        return false;
 
       }
 
