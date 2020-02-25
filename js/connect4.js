@@ -222,3 +222,22 @@ function playAgain() {
 function resetScoreboard() {
 
 }
+
+function redFirst(){
+  init();
+  playAgain();
+  document.getElementById("turn").innerHTML = "Turn: Red";
+  turn = "Red";
+  first = "Red"
+
+
+}
+
+function yellowFirst(){
+  init();
+  playAgain();
+  document.getElementById("turn").innerHTML = "Turn: Yellow";
+  turn = "Yellow";
+  first = "Yellow"
+
+}
