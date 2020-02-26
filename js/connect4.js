@@ -126,67 +126,66 @@ function takeTurn(e) {
   if (e.target.id == "board") {
     return false;
   }
-  if (!win) {
-    let index = dots.findIndex(function(dot) {
-      return dot === e.target;
-    });
+if (!win) {
+let index = dots.findIndex(function(dot) {
+  return dot === e.target;
+});
 
 
-    let row1 = index % 7;
+let row1 = index % 7;
 
-    if (board[index] === "") {
+if (board[index] === "") {
 
-      while (board[index + 7] === "") {
-        let i = index + 7;
+  while (board[index + 7] === "") {
+    let i = index + 7;
+    document.getElementById("dot" + i + "").classList.add(turn);
+    board[i] = turn;
+    document.getElementById("dot" + index + "").classList.remove(turn);
+    board[index] = "";
+    index = i;
+
+  }
+  if (board[index] === "") {
+    document.getElementById("dot" + index + "").classList.add(turn);
+    board[index] = turn;
+
+  }
+
+  }
+  else if (board[index] !== "") {
+    if (board[row1] === "") {
+      while (board[row1 + 7] === "") {
+        let i = row1 + 7;
         document.getElementById("dot" + i + "").classList.add(turn);
         board[i] = turn;
-        document.getElementById("dot" + index + "").classList.remove(turn);
-        board[index] = "";
-        index = i;
+        document.getElementById("dot" + row1 + "").classList.remove(turn);
+        board[row1] = "";
+        row1 = i;
 
       }
-      if (board[index] === "") {
-        document.getElementById("dot" + index + "").classList.add(turn);
-        board[index] = turn;
-
-      }
-
-      }
-      else if (board[index] !== "") {
-        if (board[row1] === "") {
-          while (board[row1 + 7] === "") {
-            let i = row1 + 7;
-            document.getElementById("dot" + i + "").classList.add(turn);
-            board[i] = turn;
-            document.getElementById("dot" + row1 + "").classList.remove(turn);
-            board[row1] = "";
-            row1 = i;
-
-          }
-          if (board[row1] === "") {
-            document.getElementById("dot" + row1 + "").classList.add(turn);
-            board[row1] = turn;
-
-          }
-
-        }
-      }
-      if (board[row1] !== "") {
-        return false;
+      if (board[row1] === "") {
+        document.getElementById("dot" + row1 + "").classList.add(turn);
+        board[row1] = turn;
 
       }
 
-      }
-
-      turn = turn === "Red" ? "Yellow" : "Red";
-      win = getWinner();
-      if (win === "T") {
-        ties++;
-        document.getElementById("tScore").innerHTML = ties;
-      }
-
-      render();
     }
+    else if (board[row1] !== "") {
+      return false;
+    }
+   }
+
+  }
+
+  turn = turn === "Red" ? "Yellow" : "Red";
+  win = getWinner();
+  if (win === "T") {
+    ties++;
+    document.getElementById("tScore").innerHTML = ties;
+  }
+
+  render();
+}
 
 
 
@@ -201,6 +200,16 @@ function getWinner() {
       board[condition[2]] === board[condition[3]]
     ) {
       winner = board[condition[0]];
+      if (winner === "Red") {
+        redWins++;
+        document.getElementById("redScore").innerHTML = redWins;
+        playOKOK();
+      }
+      else if (winner === "Yellow") {
+        yellowWins++;
+        document.getElementById("yellowScore").innerHTML = yellowWins;
+        playOKOK();
+      }
     }
   });
 
@@ -220,7 +229,13 @@ function playAgain() {
 }
 
 function resetScoreboard() {
+  redWins = 0;
+  yellowWins = 0;
+  ties = 0;
 
+  document.getElementById("redScore").innerHTML = redWins;
+  document.getElementById("tScore").innerHTML = ties;
+  document.getElementById("yellowScore").innerHTML = yellowWins;
 }
 
 function redFirst(){
@@ -240,4 +255,18 @@ function yellowFirst(){
   turn = "Yellow";
   first = "Yellow"
 
+}
+
+function resetScoreboard() {
+    redWins = 0;
+    yellowWins = 0;
+    ties = 0;
+
+    document.getElementById("redScore").innerHTML = redWins;
+    document.getElementById("tScore").innerHTML = ties;
+    document.getElementById("yellowScore").innerHTML = yellowWins;
+  }
+
+function playOKOK() {
+  document.getElementById("myAudio").play();
 }
