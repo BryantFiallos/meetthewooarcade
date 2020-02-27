@@ -1,7 +1,8 @@
 
 
 body {
-  background-color: periwinkle;
+  background-image: url("../images/cloudy.gif");
+  background-size: cover;
   text-align: center;
   font-family: "Roboto", monospace;
 }
