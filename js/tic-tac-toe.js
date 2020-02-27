@@ -83,7 +83,7 @@ function getWinner() {
     if (
       board[condition[0]] &&
       board[condition[0]] === board[condition[1]] &&
-      board[condition[1]] === board[condition[2]] 
+      board[condition[1]] === board[condition[2]]
 
     ) {
       winner = board[condition[0]];

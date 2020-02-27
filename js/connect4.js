@@ -84,6 +84,7 @@ let redWins = 0;
 let yellowWins = 0;
 let ties = 0;
 let first;
+let winner;
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
 const dots = Array.from(document.querySelectorAll("#board div"));
 const message = document.querySelector("h2");
@@ -123,9 +124,10 @@ function render() {
 
 function takeTurn(e) {
 
-  if (e.target.id == "board") {
+ if (e.target.id == "board") {
     return false;
   }
+
 if (!win) {
 let index = dots.findIndex(function(dot) {
   return dot === e.target;
@@ -175,7 +177,7 @@ if (board[index] === "") {
     }
    }
 
-  }
+
 
   turn = turn === "Red" ? "Yellow" : "Red";
   win = getWinner();
@@ -186,7 +188,7 @@ if (board[index] === "") {
 
   render();
 }
-
+}
 
 
 function getWinner() {
@@ -204,13 +206,17 @@ function getWinner() {
         redWins++;
         document.getElementById("redScore").innerHTML = redWins;
         playOKOK();
+
       }
       else if (winner === "Yellow") {
         yellowWins++;
         document.getElementById("yellowScore").innerHTML = yellowWins;
         playOKOK();
+
       }
+
     }
+
   });
 
   return winner ? winner : board.includes("") ? null : "T";
