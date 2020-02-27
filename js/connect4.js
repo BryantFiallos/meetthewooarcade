@@ -83,7 +83,7 @@ let win;
 let redWins = 0;
 let yellowWins = 0;
 let ties = 0;
-let first;
+let first = "Red";
 let winner;
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
 const dots = Array.from(document.querySelectorAll("#board div"));
@@ -91,7 +91,7 @@ const message = document.querySelector("h2");
 ///////////////////// EVENT LISTENERS ///////////////////////////////
 window.onload = init;
 document.getElementById("board").onclick = takeTurn;
-document.getElementById("reset-button").onclick = playAgain;
+document.getElementById("reset-button").onclick = init;
 document.getElementById("redFirst").onclick = redFirst;
 document.getElementById("yellowFirst").onclick = yellowFirst;
 document.getElementById("reset-scoreboard").onclick = resetScoreboard;
@@ -106,8 +106,25 @@ function init() {
     "", "", "", "", "", "", "",
     "", "", "", "", "", "", "",
   ];
+
+  board.forEach(function(mark, index) {
+    if (dots[index].classList.contains("Red")) {
+      dots[index].classList.remove("Red")
+    }
+    if (dots[index].classList.contains("Yellow")) {
+      dots[index].classList.remove("Yellow")
+    }
+  });
+
   turn = "Red"
   win = null
+
+  if (first === "Red") {
+    turn = "Red"
+  }
+  else if (first === "Yellow") {
+    turn = "Yellow"
+  }
 
   render();
 }
@@ -246,7 +263,7 @@ function resetScoreboard() {
 
 function redFirst(){
   init();
-  playAgain();
+
   document.getElementById("turn").innerHTML = "Turn: Red";
   turn = "Red";
   first = "Red"
@@ -256,7 +273,7 @@ function redFirst(){
 
 function yellowFirst(){
   init();
-  playAgain();
+
   document.getElementById("turn").innerHTML = "Turn: Yellow";
   turn = "Yellow";
   first = "Yellow"

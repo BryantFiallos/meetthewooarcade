@@ -42,6 +42,13 @@ li a:hover:not(.active) {
   background-color: #111;
 }
 
+.choose {
+  padding-top: 16%;
+  margin: 0px;
+  height: 100px;
+
+}
+
 .active {
   background-color: #4CAF50;
 }
@@ -50,9 +57,9 @@ li a:hover:not(.active) {
 width: 250;
 height: 700;
 height: 100%;
-padding-top: 22%;
+padding-top: 8%;
 flex-wrap: wrap;
-margin: auto;
+margin: 0px;
 
 }
 

@@ -3,6 +3,14 @@
 body {
   background-color: periwinkle;
   text-align: center;
+  font-family: "Roboto", monospace;
+}
+
+h1 {
+  margin: 0 auto;
+  font-family: "Major Mono Display", monospace;
+  font-size: 48px;
+  margin: 2%;
 }
 
 td {
@@ -81,7 +89,7 @@ li a:hover:not(.active) {
 .wrap {
   flex-wrap: wrap;
   height: 750px;
-  width: 750px;
+  width: 800px;
 }
 
 .container {
