@@ -1,6 +1,17 @@
 ///////////////////// CONSTANTS /////////////////////////////////////
+const winningConditions = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+];
+
 const firstLeftWinConditions = [
-  
+
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9],
@@ -114,6 +125,7 @@ let xWins = 0;
 let oWins = 0;
 let ties = 0;
 let first = "X"
+let nextMove;
 let gameWinner;
 let currentSquare;
 let firstLeftWin;
@@ -155,9 +167,11 @@ function init() {
   }
 
   board = [
+
   ];
 
   turn = "X";
+  nextMove = "any"
   render();
 }
 
@@ -176,10 +190,33 @@ function takeTurn(e) {
       return square === e.target;
     });
 
-    if (squares[index] === "") {
+console.log(index);
+
+  if (nextMove == "any") {
+    if (squares[index].textContent === "") {
       board[index] = turn;
       turn = turn === "X" ? "O" : "X";
       win = getWinner();
+      nextMove = getNextMove(e);
+      if (win === "T") {
+        ties++;
+        document.getElementById("tScore").innerHTML = ties;
+      }
+
+      render();
+    }
+  }
+
+
+
+
+  else if (nextMove == "firstleft") {
+    if (index >= 1 && index <= 9) {
+    if (squares[index].textContent === "") {
+      board[index] = turn;
+      turn = turn === "X" ? "O" : "X";
+      win = getWinner();
+      nextMove = getNextMove(e);
       if (win === "T") {
         ties++;
         document.getElementById("tScore").innerHTML = ties;
@@ -190,10 +227,163 @@ function takeTurn(e) {
   }
 }
 
+
+else if (nextMove == "firstmiddle") {
+  if (index >= 11 && index <= 19) {
+  if (squares[index].textContent === "") {
+    board[index] = turn;
+    turn = turn === "X" ? "O" : "X";
+    win = getWinner();
+    nextMove = getNextMove(e);
+    if (win === "T") {
+      ties++;
+      document.getElementById("tScore").innerHTML = ties;
+    }
+
+    render();
+  }
+}
+}
+
+
+else if (nextMove == "firstright") {
+  if (index >= 21 && index <= 29) {
+  if (squares[index].textContent === "") {
+    board[index] = turn;
+    turn = turn === "X" ? "O" : "X";
+    win = getWinner();
+    nextMove = getNextMove(e);
+    if (win === "T") {
+      ties++;
+      document.getElementById("tScore").innerHTML = ties;
+    }
+
+    render();
+  }
+}
+}
+
+
+else if (nextMove == "secondleft") {
+  if (index >= 31 && index <= 39) {
+  if (squares[index].textContent === "") {
+    board[index] = turn;
+    turn = turn === "X" ? "O" : "X";
+    win = getWinner();
+    nextMove = getNextMove(e);
+    if (win === "T") {
+      ties++;
+      document.getElementById("tScore").innerHTML = ties;
+    }
+
+    render();
+  }
+}
+}
+
+
+else if (nextMove == "secondmiddle") {
+  if (index >= 41 && index <= 49) {
+  if (squares[index].textContent === "") {
+    board[index] = turn;
+    turn = turn === "X" ? "O" : "X";
+    win = getWinner();
+    nextMove = getNextMove(e);
+    if (win === "T") {
+      ties++;
+      document.getElementById("tScore").innerHTML = ties;
+    }
+
+    render();
+  }
+}
+}
+
+
+else if (nextMove == "secondright") {
+  if (index >= 51 && index <= 59) {
+  if (squares[index].textContent === "") {
+    board[index] = turn;
+    turn = turn === "X" ? "O" : "X";
+    win = getWinner();
+    nextMove = getNextMove(e);
+    if (win === "T") {
+      ties++;
+      document.getElementById("tScore").innerHTML = ties;
+    }
+
+    render();
+  }
+}
+}
+
+
+else if (nextMove == "thirdleft") {
+  if (index >= 61 && index <= 69) {
+  if (squares[index].textContent === "") {
+    board[index] = turn;
+    turn = turn === "X" ? "O" : "X";
+    win = getWinner();
+    nextMove = getNextMove(e);
+    if (win === "T") {
+      ties++;
+      document.getElementById("tScore").innerHTML = ties;
+    }
+
+    render();
+  }
+}
+}
+
+
+else if (nextMove == "thirdmiddle") {
+  if (index >= 71 && index <= 79) {
+    if (squares[index].textContent === "") {
+    board[index] = turn;
+    turn = turn === "X" ? "O" : "X";
+    win = getWinner();
+    nextMove = getNextMove(e);
+    if (win === "T") {
+      ties++;
+      document.getElementById("tScore").innerHTML = ties;
+    }
+
+    render();
+  }
+}
+}
+
+
+else if (nextMove == "thirdright") {
+  if (index >= 81 && index <= 89) {
+  if (squares[index].textContent === "") {
+    board[index] = turn;
+    turn = turn === "X" ? "O" : "X";
+    win = getWinner();
+    nextMove = getNextMove(e);
+    if (win === "T") {
+      ties++;
+      document.getElementById("tScore").innerHTML = ties;
+    }
+
+    render();
+  }
+}
+}
+
+else {
+  return false;
+}
+
+
+  }
+}
+
 function getWinner() {
   let winner = null;
 
   winningConditions.forEach(function(condition, index) {
+    if (board.includes("") == false) {
     if (
       board[condition[0]] &&
       board[condition[0]] === board[condition[1]] &&
@@ -213,7 +403,7 @@ function getWinner() {
       }
 
     }
-
+}
   });
 
   return winner ? winner : board.includes("") ? null : "T";
@@ -233,9 +423,6 @@ function oFirst(){
   first = "O"
 }
 
-function playYuh() {
-  document.getElementById("myAudio").play();
-}
 
 function resetScoreboard() {
     xWins = 0;
@@ -245,4 +432,54 @@ function resetScoreboard() {
     document.getElementById("xScore").innerHTML = xWins;
     document.getElementById("tScore").innerHTML = ties;
     document.getElementById("oScore").innerHTML = oWins;
+}
+
+function playYuh() {
+  document.getElementById("myAudio").play();
+}
+
+function getNextMove(e) {
+
+  let index = squares.findIndex(function(square) {
+    return square === e.target;
+  });
+
+  if (index % 10 == 1) {
+    nextMove = "firstleft"
+  }
+  else if (index % 10 == 2) {
+    nextMove = "firstmiddle"
+
+  }
+  else if (index % 10 == 3) {
+    nextMove = "firstright"
+
+  }
+  else if (index % 10 == 4) {
+    nextMove = "secondleft"
+
+  }
+  else if (index % 10 == 5) {
+    nextMove = "secondmiddle"
+
+  }
+  else if (index % 10 == 6) {
+    nextMove = "secondright"
+
+  }
+  else if (index % 10 == 7) {
+    nextMove = "thirdleft"
+
+  }
+  else if (index % 10 == 8) {
+    nextMove = "thirdmiddle"
+
+  }
+  else if (index % 10 == 9) {
+    nextMove = "thirdright"
+
+  }
+
+  return nextMove;
+
 }
