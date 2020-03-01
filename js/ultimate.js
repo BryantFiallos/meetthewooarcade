@@ -195,7 +195,7 @@ function render() {
 }
 
 function takeTurn(e) {
-  if (!gameWinner) {
+  if (!win) {
     let index = squares.findIndex(function(square) {
       return square === e.target;
     });
@@ -232,6 +232,7 @@ console.log(index);
       firstLeftWinner = getFirstLeftWinner(e);
       nextMove = getNextMove(e);
       document.getElementById("first-left").classList.remove("nextSquare");
+      nextMove = getNextMove(e);
 
       if (win === "T") {
         ties++;
@@ -258,8 +259,9 @@ else if (nextMove == "firstmiddle") {
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
     firstMiddleWinner = getFirstMiddleWinner();
-    nextMove = getNextMove(e);
+
     document.getElementById("first-middle").classList.remove("nextSquare");
+    nextMove = getNextMove(e);
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -286,8 +288,9 @@ else if (nextMove == "firstright") {
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
     firstRightWinner = getFirstRightWinner();
-    nextMove = getNextMove(e);
+
     document.getElementById("first-right").classList.remove("nextSquare");
+    nextMove = getNextMove(e);
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -315,8 +318,9 @@ else if (nextMove == "secondleft") {
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
     secondLeftWinner = getSecondLeftWinner();
-    nextMove = getNextMove(e);
+
     document.getElementById("second-left").classList.remove("nextSquare");
+    nextMove = getNextMove(e);
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -344,8 +348,9 @@ else if (nextMove == "secondmiddle") {
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
     secondMiddleWinner = getSecondMiddleWinner();
-    nextMove = getNextMove(e);
+
     document.getElementById("second-middle").classList.remove("nextSquare");
+    nextMove = getNextMove(e);
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -371,8 +376,9 @@ else if (nextMove == "secondright") {
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
     secondRightWinner = getSecondRightWinner();
-    nextMove = getNextMove(e);
+
     document.getElementById("second-right").classList.remove("nextSquare");
+    nextMove = getNextMove(e);
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -398,8 +404,9 @@ else if (nextMove == "thirdleft") {
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
     thirdLeftWinner = getThirdLeftWinner();
-    nextMove = getNextMove(e);
+
     document.getElementById("third-left").classList.remove("nextSquare");
+    nextMove = getNextMove(e);
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -425,8 +432,9 @@ else if (nextMove == "thirdmiddle") {
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
     thirdMiddleWinner = getThirdMiddleWinner();
-    nextMove = getNextMove(e);
+
     document.getElementById("third-middle").classList.remove("nextSquare");
+    nextMove = getNextMove(e);
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -452,8 +460,9 @@ else if (nextMove == "thirdright") {
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
     thirdRightWinner = getThirdRightWinner();
-    nextMove = getNextMove(e);
+    
     document.getElementById("third-right").classList.remove("nextSquare");
+    nextMove = getNextMove(e);
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -472,7 +481,8 @@ else {
   return false;
 }
 
-
+win = getWinner();
+render();
   }
 }
 
@@ -488,6 +498,7 @@ function getWinner() {
 
     ) {
       winner = board[condition[0]];
+      win = winner;
       if (winner === "X") {
         xWins++;
         document.getElementById("xScore").innerHTML = xWins;
