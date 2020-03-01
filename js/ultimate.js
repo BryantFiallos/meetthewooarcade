@@ -1,13 +1,13 @@
 ///////////////////// CONSTANTS /////////////////////////////////////
 const winningConditions = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6]
+  [0, 10, 20],
+  [30, 40, 50],
+  [60, 70, 80],
+  [0, 30, 60],
+  [10, 40, 70],
+  [20, 50, 80],
+  [0, 40, 80],
+  [20, 40, 60]
 ];
 
 const firstLeftWinConditions = [
@@ -120,7 +120,7 @@ const thirdRightWinConditions = [
 ///////////////////// APP STATE (VARIABLES) /////////////////////////
 let board;
 let turn;
-let win;
+let win = false;
 let xWins = 0;
 let oWins = 0;
 let ties = 0;
@@ -128,15 +128,15 @@ let first = "X"
 let nextMove;
 let gameWinner;
 let currentSquare;
-let firstLeftWin;
-let firstMiddleWin;
-let firstRightWin;
-let secondLeftWin;
-let secondMiddleWin;
-let secondRightWin;
-let thirdLeftWin;
-let thirdMiddleWin;
-let thirdRightWin;
+let firstLeftWin = false;
+let firstMiddleWin = false;
+let firstRightWin = false;
+let secondLeftWin = false;
+let secondMiddleWin = false;
+let secondRightWin = false;
+let thirdLeftWin = false;
+let thirdMiddleWin = false;
+let thirdRightWin = false;
 let firstLeftWinner;
 let firstMiddleWinner;
 let firstRightWinner;
@@ -169,6 +169,16 @@ function init() {
   board = [
 
   ];
+document.getElementById("first-left").classList.remove("nextSquare");
+document.getElementById("first-middle").classList.remove("nextSquare");
+document.getElementById("first-right").classList.remove("nextSquare");
+document.getElementById("second-left").classList.remove("nextSquare");
+document.getElementById("second-middle").classList.remove("nextSquare");
+document.getElementById("second-right").classList.remove("nextSquare");
+document.getElementById("third-left").classList.remove("nextSquare");
+document.getElementById("third-middle").classList.remove("nextSquare");
+document.getElementById("third-right").classList.remove("nextSquare");
+
 
   turn = "X";
   nextMove = "any"
@@ -211,12 +221,18 @@ console.log(index);
 
 
   else if (nextMove == "firstleft") {
+    if (board[0] != "X" && board[0] != "O" && board[0] != "T") {
+
+
     if (index >= 1 && index <= 9) {
     if (squares[index].textContent === "") {
       board[index] = turn;
       turn = turn === "X" ? "O" : "X";
       win = getWinner();
+      firstLeftWinner = getFirstLeftWinner(e);
       nextMove = getNextMove(e);
+      document.getElementById("first-left").classList.remove("nextSquare");
+
       if (win === "T") {
         ties++;
         document.getElementById("tScore").innerHTML = ties;
@@ -226,15 +242,24 @@ console.log(index);
     }
   }
 }
+  else {
+    nextMove = "any"
+  }
+}
 
 
 else if (nextMove == "firstmiddle") {
+  if (board[10] != "X" && board[10] != "O" && board[10] != "T") {
+
+
   if (index >= 11 && index <= 19) {
   if (squares[index].textContent === "") {
     board[index] = turn;
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
+    firstMiddleWinner = getFirstMiddleWinner();
     nextMove = getNextMove(e);
+    document.getElementById("first-middle").classList.remove("nextSquare");
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -242,17 +267,27 @@ else if (nextMove == "firstmiddle") {
 
     render();
   }
+}
+
+}
+else {
+  nextMove = "any"
 }
 }
 
 
 else if (nextMove == "firstright") {
+  if (board[20] != "X" && board[20] != "O" && board[20] != "T") {
+
+
   if (index >= 21 && index <= 29) {
   if (squares[index].textContent === "") {
     board[index] = turn;
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
+    firstRightWinner = getFirstRightWinner();
     nextMove = getNextMove(e);
+    document.getElementById("first-right").classList.remove("nextSquare");
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -261,16 +296,27 @@ else if (nextMove == "firstright") {
     render();
   }
 }
+
+}
+else {
+  nextMove = "any"
+}
 }
 
 
+
 else if (nextMove == "secondleft") {
-  if (index >= 31 && index <= 39) {
+  if (board[30] != "X" && board[30] != "O" && board[30] != "T") {
+
+
+  if (index >= 31 && index <= 39 ) {
   if (squares[index].textContent === "") {
     board[index] = turn;
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
+    secondLeftWinner = getSecondLeftWinner();
     nextMove = getNextMove(e);
+    document.getElementById("second-left").classList.remove("nextSquare");
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -278,17 +324,28 @@ else if (nextMove == "secondleft") {
 
     render();
   }
+}
+
+}
+else {
+  nextMove = "any"
 }
 }
 
 
 else if (nextMove == "secondmiddle") {
+  if (board[40] != "X" && board[40] != "O" && board[40] != "T") {
+    document.getElementById("second-middle").classList.add("nextSquare");
+
+
   if (index >= 41 && index <= 49) {
   if (squares[index].textContent === "") {
     board[index] = turn;
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
+    secondMiddleWinner = getSecondMiddleWinner();
     nextMove = getNextMove(e);
+    document.getElementById("second-middle").classList.remove("nextSquare");
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -296,17 +353,26 @@ else if (nextMove == "secondmiddle") {
 
     render();
   }
+}
+}
+else {
+  nextMove = "any"
 }
 }
 
 
 else if (nextMove == "secondright") {
+  if (board[50] != "X" && board[50] != "O" && board[50] != "T") {
+
+
   if (index >= 51 && index <= 59) {
   if (squares[index].textContent === "") {
     board[index] = turn;
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
+    secondRightWinner = getSecondRightWinner();
     nextMove = getNextMove(e);
+    document.getElementById("second-right").classList.remove("nextSquare");
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -314,17 +380,26 @@ else if (nextMove == "secondright") {
 
     render();
   }
+}
+}
+else {
+  nextMove = "any"
 }
 }
 
 
 else if (nextMove == "thirdleft") {
+  if (board[60] != "X" && board[60] != "O" && board[60] != "T") {
+
+
   if (index >= 61 && index <= 69) {
   if (squares[index].textContent === "") {
     board[index] = turn;
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
+    thirdLeftWinner = getThirdLeftWinner();
     nextMove = getNextMove(e);
+    document.getElementById("third-left").classList.remove("nextSquare");
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -332,17 +407,26 @@ else if (nextMove == "thirdleft") {
 
     render();
   }
+}
+}
+else {
+  nextMove = "any"
 }
 }
 
 
 else if (nextMove == "thirdmiddle") {
+  if (board[70] != "X" && board[70] != "O" && board[70] != "T") {
+
+
   if (index >= 71 && index <= 79) {
     if (squares[index].textContent === "") {
     board[index] = turn;
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
+    thirdMiddleWinner = getThirdMiddleWinner();
     nextMove = getNextMove(e);
+    document.getElementById("third-middle").classList.remove("nextSquare");
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -350,17 +434,26 @@ else if (nextMove == "thirdmiddle") {
 
     render();
   }
+}
+}
+else {
+  nextMove = "any"
 }
 }
 
 
 else if (nextMove == "thirdright") {
+  if (board[80] != "X" && board[80] != "O" && board[80] != "T") {
+
+
   if (index >= 81 && index <= 89) {
   if (squares[index].textContent === "") {
     board[index] = turn;
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
+    thirdRightWinner = getThirdRightWinner();
     nextMove = getNextMove(e);
+    document.getElementById("third-right").classList.remove("nextSquare");
     if (win === "T") {
       ties++;
       document.getElementById("tScore").innerHTML = ties;
@@ -368,6 +461,10 @@ else if (nextMove == "thirdright") {
 
     render();
   }
+}
+}
+else {
+  nextMove = "any"
 }
 }
 
@@ -383,7 +480,7 @@ function getWinner() {
   let winner = null;
 
   winningConditions.forEach(function(condition, index) {
-    if (board.includes("") == false) {
+
     if (
       board[condition[0]] &&
       board[condition[0]] === board[condition[1]] &&
@@ -403,10 +500,17 @@ function getWinner() {
       }
 
     }
-}
+
   });
 
-  return winner ? winner : board.includes("") ? null : "T";
+  if (!winner && board[0] != undefined && board[10] != undefined && board[20] != undefined && board[30] != undefined && board[40] != undefined && board[50] != undefined && board[60] != undefined && board[70] != undefined && board[80] != undefined) {
+    winner = "T";
+    win = winner;
+
+
+  }
+
+  return winner ? winner : board.includes(undefined) ? null : "T";
 }
 
 function xFirst(){
@@ -445,41 +549,382 @@ function getNextMove(e) {
   });
 
   if (index % 10 == 1) {
-    nextMove = "firstleft"
-  }
-  else if (index % 10 == 2) {
-    nextMove = "firstmiddle"
+    if (board[0] == undefined) {
+      nextMove = "firstleft"
+      document.getElementById("first-left").classList.add("nextSquare");
+    }
+    else if (board[0] != undefined) {
+      nextMove = "any";
+
+    }
 
   }
-  else if (index % 10 == 3) {
-    nextMove = "firstright"
+
+
+  if (index % 10 == 2) {
+    if (board[10] == undefined) {
+      nextMove = "firstmiddle"
+      document.getElementById("first-middle").classList.add("nextSquare");
+    }
+    else if (board[10] != undefined) {
+      nextMove = "any";
+
+    }
+
 
   }
-  else if (index % 10 == 4) {
-    nextMove = "secondleft"
+
+
+  if (index % 10 == 3) {
+    if (board[20] == undefined) {
+      nextMove = "firstright"
+      document.getElementById("first-right").classList.add("nextSquare");
+    }
+    else if (board[20] != undefined) {
+      nextMove = "any";
+
+    }
+
 
   }
-  else if (index % 10 == 5) {
-    nextMove = "secondmiddle"
+
+
+  if (index % 10 == 4) {
+    if (board[30] == undefined) {
+      nextMove = "secondleft"
+      document.getElementById("second-left").classList.add("nextSquare");
+    }
+    else if (board[30] != undefined) {
+      nextMove = "any";
+
+    }
+
 
   }
-  else if (index % 10 == 6) {
-    nextMove = "secondright"
+
+
+
+  if (index % 10 == 5) {
+    if (board[40] == undefined) {
+      nextMove = "secondmiddle"
+      document.getElementById("second-middle").classList.add("nextSquare");
+    }
+    else if (board[40] != undefined) {
+      nextMove = "any";
+
+    }
+
 
   }
-  else if (index % 10 == 7) {
-    nextMove = "thirdleft"
+
+
+  if (index % 10 == 6) {
+    if (board[50] == undefined) {
+      nextMove = "secondright"
+      document.getElementById("second-right").classList.add("nextSquare");
+    }
+    else if (board[50] != undefined) {
+      nextMove = "any";
+
+    }
+
 
   }
-  else if (index % 10 == 8) {
-    nextMove = "thirdmiddle"
+
+
+  if (index % 10 == 7) {
+    if (board[60] == undefined) {
+      nextMove = "thirdleft"
+      document.getElementById("third-left").classList.add("nextSquare");
+    }
+    else if (board[60] != undefined) {
+      nextMove = "any";
+
+    }
+
 
   }
-  else if (index % 10 == 9) {
-    nextMove = "thirdright"
+
+
+  if (index % 10 == 8) {
+    if (board[70] == undefined) {
+      nextMove = "thirdmiddle"
+      document.getElementById("third-middle").classList.add("nextSquare");
+    }
+    else if (board[70] != undefined) {
+      nextMove = "any";
+
+    }
+
+
+  }
+
+
+  if (index % 10 == 9) {
+    if (board[80] == undefined) {
+      nextMove = "thirdright"
+      document.getElementById("third-right").classList.add("nextSquare");
+    }
+    else if (board[80] != undefined) {
+      nextMove = "any";
+
+    }
+
 
   }
 
   return nextMove;
+
+}
+
+
+function getFirstLeftWinner(e) {
+let firstLeftWin = false;
+  firstLeftWinConditions.forEach(function(condition, index) {
+  if (
+    board[condition[0]] &&
+    board[condition[0]] === board[condition[1]] &&
+    board[condition[1]] === board[condition[2]]
+  ) {
+
+  winner = board[condition[0]];
+  firstLeftWin = true;
+  firstLeftWinner = winner;
+  console.log("LOCAL WINNER 1");
+  board[0] = winner;
+}
+});
+
+if (!firstLeftWin && board[1] != undefined && board[2] != undefined && board[3] != undefined && board[4] != undefined && board[5] != undefined && board[6] != undefined && board[7] != undefined && board[8] != undefined && board[9] != undefined) {
+  winner = "T";
+  firstLeftWinner = winner;
+  board[0] = winner;
+
+}
+
+}
+
+
+function getFirstMiddleWinner() {
+  let firstMiddleWin = false;
+
+  firstMiddleWinConditions.forEach(function(condition, index) {
+  if (
+    board[condition[0]] &&
+    board[condition[0]] === board[condition[1]] &&
+    board[condition[1]] === board[condition[2]]
+  ) {
+
+  winner = board[condition[0]];
+  firstMiddleWin = true;
+  firstMiddleWinner = winner;
+  console.log("LOCAL WINNER 1");
+  board[10] = winner;
+}
+});
+
+if (!firstMiddleWin && board[11] != undefined && board[12] != undefined && board[13] != undefined && board[14] != undefined && board[15] != undefined && board[16] != undefined && board[17] != undefined && board[18] != undefined && board[19] != undefined) {
+  winner = "T";
+  firstMiddleWinner = winner;
+  board[10] = winner;
+
+}
+
+}
+
+
+function getFirstRightWinner() {
+  let firstRightWin = false;
+
+  firstRightWinConditions.forEach(function(condition, index) {
+  if (
+    board[condition[0]] &&
+    board[condition[0]] === board[condition[1]] &&
+    board[condition[1]] === board[condition[2]]
+  ) {
+
+  winner = board[condition[0]];
+  firstRightWin = true;
+  firstRightWinner = winner;
+  console.log("LOCAL WINNER 1");
+  board[20] = winner;
+}
+});
+
+if (!firstRightWin && board[21] != undefined && board[22] != undefined && board[23] != undefined && board[24] != undefined && board[25] != undefined && board[26] != undefined && board[27] != undefined && board[28] != undefined && board[29] != undefined) {
+  winner = "T";
+  firstRightWinner = winner;
+  board[20] = winner;
+
+}
+
+}
+
+
+function getSecondLeftWinner() {
+  secondLeftWin = false;
+
+  secondLeftWinConditions.forEach(function(condition, index) {
+  if (
+    board[condition[0]] &&
+    board[condition[0]] === board[condition[1]] &&
+    board[condition[1]] === board[condition[2]]
+  ) {
+
+  winner = board[condition[0]];
+  secondLeftWin = true;
+  secondLeftWinner = winner;
+  console.log("LOCAL WINNER 1");
+  board[30] = winner;
+}
+});
+
+if (!secondLeftWin && board[31] != undefined && board[32] != undefined && board[33] != undefined && board[34] != undefined && board[35] != undefined && board[36] != undefined && board[37] != undefined && board[38] != undefined && board[39] != undefined) {
+  winner = "T";
+  secondLeftWinner = winner;
+  board[30] = winner;
+
+}
+
+}
+
+
+function getSecondMiddleWinner() {
+let secondMiddleWin = false;
+  secondMiddleWinConditions.forEach(function(condition, index) {
+  if (
+    board[condition[0]] &&
+    board[condition[0]] === board[condition[1]] &&
+    board[condition[1]] === board[condition[2]]
+  ) {
+
+  winner = board[condition[0]];
+  secondMiddleWin = true;
+  secondMiddleWinner = winner;
+  console.log("LOCAL WINNER 1");
+  board[40] = winner;
+}
+
+});
+
+if (!secondMiddleWin && board[41] != undefined && board[42] != undefined && board[43] != undefined && board[44] != undefined && board[45] != undefined && board[46] != undefined && board[47] != undefined && board[48] != undefined && board[49] != undefined) {
+  winner = "T";
+  secondMiddleWinner = winner;
+  board[40] = secondMiddleWinner;
+
+}
+return secondMiddleWinner;
+}
+
+
+function getSecondRightWinner() {
+
+let secondRightWin = false;
+  secondRightWinConditions.forEach(function(condition, index) {
+  if (
+    board[condition[0]] &&
+    board[condition[0]] === board[condition[1]] &&
+    board[condition[1]] === board[condition[2]]
+  ) {
+
+  winner = board[condition[0]];
+  secondRightWin = true;
+  secondRightWinner = winner;
+  console.log("LOCAL WINNER 1");
+  board[50] = winner;
+}
+});
+
+if (!secondRightWin && board[51] != undefined && board[52] != undefined && board[53] != undefined && board[54] != undefined && board[55] != undefined && board[56] != undefined && board[57] != undefined && board[58] != undefined && board[59] != undefined) {
+  winner = "T";
+  secondRightWinner = winner;
+  board[50] = secondRightWinner;
+  console.log("issa tie");
+
+}
+
+}
+
+
+function getThirdLeftWinner() {
+  let thirdLeftWin = false;
+
+  thirdLeftWinConditions.forEach(function(condition, index) {
+  if (
+    board[condition[0]] &&
+    board[condition[0]] === board[condition[1]] &&
+    board[condition[1]] === board[condition[2]]
+  ) {
+
+  winner = board[condition[0]];
+  thirdLeftWin = true;
+  thirdLeftWinner = winner;
+  console.log("LOCAL WINNER 1");
+  board[60] = winner;
+}
+});
+
+if (!thirdLeftWin && board[61] != undefined && board[62] != undefined && board[63] != undefined && board[64] != undefined && board[65] != undefined && board[66] != undefined && board[67] != undefined && board[68] != undefined && board[69] != undefined) {
+  winner = "T";
+  thirdLeftWinner = winner;
+  board[60] = winner;
+
+}
+
+}
+
+
+function getThirdMiddleWinner() {
+  let thirdMiddleWin = false;
+
+  thirdMiddleWinConditions.forEach(function(condition, index) {
+  if (
+    board[condition[0]] &&
+    board[condition[0]] === board[condition[1]] &&
+    board[condition[1]] === board[condition[2]]
+  ) {
+
+  winner = board[condition[0]];
+  thirdMiddleWin = true;
+  thirdMiddleWinner = winner;
+  console.log("LOCAL WINNER 1");
+  board[70] = winner;
+}
+});
+
+if (!thirdMiddleWin && board[71] != undefined && board[72] != undefined && board[73] != undefined && board[74] != undefined && board[75] != undefined && board[76] != undefined && board[77] != undefined && board[78] != undefined && board[79] != undefined) {
+  winner = "T";
+  thirdMiddleWinner = winner;
+  board[70] = winner;
+
+}
+
+}
+
+
+function getThirdRightWinner() {
+  let thirdRightWin = false;
+
+  thirdRightWinConditions.forEach(function(condition, index) {
+  if (
+    board[condition[0]] &&
+    board[condition[0]] === board[condition[1]] &&
+    board[condition[1]] === board[condition[2]]
+  ) {
+
+  winner = board[condition[0]];
+  thirdRightWin = true;
+  thirdRightWinner = winner;
+  console.log("LOCAL WINNER 1");
+  board[80] = winner;
+}
+});
+
+if (!thirdLeftWin && board[81] != undefined && board[82] != undefined && board[83] != undefined && board[84] != undefined && board[85] != undefined && board[86] != undefined && board[87] != undefined && board[88] != undefined && board[89] != undefined) {
+  winner = "T";
+  thirdRightWinner = winner;
+  board[80] = winner;
+
+}
 
 }

@@ -13,6 +13,9 @@
     <title>Ultimate Tic-Tac-Toe</title>
   </head>
   <body>
+    <audio id="myAudio">
+      <source src="audio/woowoo.mp3" type="audio/mpeg">
+    </audio>
     <ul>
       <li><a  href="index.html">Home</a></li>
       <li><a href="tic-tac-toe.html">Tic-Tac-Toe</a></li>
@@ -45,7 +48,7 @@
   <h2 id="turn">Turn: X</h2>
         <div class="container wrap" id="board">
 
-          <div class="square container miniwrap firstleft">
+          <div class="square container miniwrap" id="first-left">
             <div class="mini-square"></div>
             <div class="mini-square"></div>
             <div class="mini-square"></div>
@@ -57,7 +60,7 @@
             <div class="mini-square"></div>
           </div>
 
-          <div class="square container miniwrap firstmiddle">
+          <div class="square container miniwrap" id="first-middle">
             <div class="mini-square"></div>
             <div class="mini-square"></div>
             <div class="mini-square"></div>
@@ -69,7 +72,7 @@
             <div class="mini-square"></div>
           </div>
 
-          <div class="square container miniwrap firstright">
+          <div class="square container miniwrap" id="first-right">
             <div class="mini-square"></div>
             <div class="mini-square"></div>
             <div class="mini-square"></div>
@@ -81,7 +84,7 @@
             <div class="mini-square"></div>
           </div>
 
-          <div class="square container miniwrap secondleft">
+          <div class="square container miniwrap" id="second-left">
             <div class="mini-square"></div>
             <div class="mini-square"></div>
             <div class="mini-square"></div>
@@ -93,7 +96,7 @@
             <div class="mini-square"></div>
           </div>
 
-          <div class="square container miniwrap secondmiddle">
+          <div class="square container miniwrap" id="second-middle">
             <div class="mini-square"></div>
             <div class="mini-square"></div>
             <div class="mini-square"></div>
@@ -105,7 +108,7 @@
             <div class="mini-square"></div>
           </div>
 
-          <div class="square container miniwrap secondright">
+          <div class="square container miniwrap" id="second-right">
             <div class="mini-square"></div>
             <div class="mini-square"></div>
             <div class="mini-square"></div>
@@ -117,7 +120,7 @@
             <div class="mini-square"></div>
           </div>
 
-          <div class="square container miniwrap thirdleft">
+          <div class="square container miniwrap" id="third-left">
             <div class="mini-square"></div>
             <div class="mini-square"></div>
             <div class="mini-square"></div>
@@ -129,7 +132,7 @@
             <div class="mini-square"></div>
           </div>
 
-          <div class="square container miniwrap thirdmiddle">
+          <div class="square container miniwrap" id="third-middle">
             <div class="mini-square"></div>
             <div class="mini-square"></div>
             <div class="mini-square"></div>
@@ -141,7 +144,7 @@
             <div class="mini-square"></div>
           </div>
 
-          <div class="square container miniwrap thirdright">
+          <div class="square container miniwrap" id="third-right">
             <div class="mini-square"></div>
             <div class="mini-square"></div>
             <div class="mini-square"></div>
