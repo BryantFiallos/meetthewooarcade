@@ -202,7 +202,7 @@ function takeTurn(e) {
       return square === e.target;
     });
 
-console.log(index);
+
 
   if (nextMove == "any") {
     if (squares[index].textContent === "") {
@@ -703,7 +703,7 @@ let firstLeftWin = false;
   winner = board[condition[0]];
   firstLeftWin = true;
   firstLeftWinner = winner;
-  console.log("LOCAL WINNER 1");
+
   board[0] = winner;
 
 }
@@ -732,7 +732,7 @@ function getFirstMiddleWinner() {
   winner = board[condition[0]];
   firstMiddleWin = true;
   firstMiddleWinner = winner;
-  console.log("LOCAL WINNER 1");
+
   board[10] = winner;
 }
 });
@@ -760,7 +760,7 @@ function getFirstRightWinner() {
   winner = board[condition[0]];
   firstRightWin = true;
   firstRightWinner = winner;
-  console.log("LOCAL WINNER 1");
+
   board[20] = winner;
 }
 });
@@ -788,7 +788,7 @@ function getSecondLeftWinner() {
   winner = board[condition[0]];
   secondLeftWin = true;
   secondLeftWinner = winner;
-  console.log("LOCAL WINNER 1");
+
   board[30] = winner;
 }
 });
@@ -815,7 +815,7 @@ let secondMiddleWin = false;
   winner = board[condition[0]];
   secondMiddleWin = true;
   secondMiddleWinner = winner;
-  console.log("LOCAL WINNER 1");
+
   board[40] = winner;
 }
 
@@ -844,7 +844,7 @@ let secondRightWin = false;
   winner = board[condition[0]];
   secondRightWin = true;
   secondRightWinner = winner;
-  console.log("LOCAL WINNER 1");
+
   board[50] = winner;
 }
 });
@@ -853,7 +853,7 @@ if (!secondRightWin && board[51] != undefined && board[52] != undefined && board
   winner = "T";
   secondRightWinner = winner;
   board[50] = secondRightWinner;
-  console.log("issa tie");
+
 
 }
 
@@ -873,7 +873,7 @@ function getThirdLeftWinner() {
   winner = board[condition[0]];
   thirdLeftWin = true;
   thirdLeftWinner = winner;
-  console.log("LOCAL WINNER 1");
+
   board[60] = winner;
 }
 });
@@ -901,7 +901,7 @@ function getThirdMiddleWinner() {
   winner = board[condition[0]];
   thirdMiddleWin = true;
   thirdMiddleWinner = winner;
-  console.log("LOCAL WINNER 1");
+
   board[70] = winner;
 }
 });
@@ -929,7 +929,7 @@ function getThirdRightWinner() {
   winner = board[condition[0]];
   thirdRightWin = true;
   thirdRightWinner = winner;
-  console.log("LOCAL WINNER 1");
+
   board[80] = winner;
 }
 });
