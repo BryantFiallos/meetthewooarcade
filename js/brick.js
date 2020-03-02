@@ -1,24 +1,27 @@
+
+
+
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var ballRadius = 20;
+var ballRadius = 15;
 var x = canvas.width/2;
 var y = canvas.height-30;
-var dx = 2;
-var dy = -2;
-var paddleHeight = 20;
-var paddleWidth = 150;
+var dx = 5;
+var dy = -5;
+var paddleHeight = 10;
+var paddleWidth = 100;
 var paddleX = (canvas.width-paddleWidth)/2;
 var rightPressed = false;
 var leftPressed = false;
-var brickRowCount = 5;
+var brickRowCount = 8;
 var brickColumnCount = 3;
-var brickWidth = 155;
+var brickWidth = 90;
 var brickHeight = 40;
-var brickPadding = 22;
+var brickPadding = 24;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 40;
 var score = 0;
-var lives = 3;
+let lives = 3;
 
 var bricks = [];
 for(var c=0; c<brickColumnCount; c++) {
@@ -31,6 +34,10 @@ for(var c=0; c<brickColumnCount; c++) {
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
+
+
+
+
 
 function keyDownHandler(e) {
     if(e.key == "Right" || e.key == "ArrowRight") {
@@ -66,6 +73,7 @@ function collisionDetection() {
           b.status = 0;
           score++;
           if(score == brickRowCount*brickColumnCount) {
+            playYuh();
             alert("YOU WON!");
             document.location.reload();
             document.getElementById("message").innerHTML = "YOU WIN!"
@@ -115,7 +123,12 @@ function drawScore() {
 function drawLives() {
   ctx.font = "16px Arial";
   ctx.fillStyle = "white";
+
   ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+}
+
+function playYuh() {
+  document.getElementById("myAudio").play();
 }
 
 function draw() {
