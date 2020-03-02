@@ -148,6 +148,7 @@ let thirdMiddleWinner;
 let thirdRightWinner;
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
 const squares = Array.from(document.querySelectorAll("#board div"));
+const squares0 = squares[0].textContent;
 const message = document.querySelector("h2");
 ///////////////////// EVENT LISTENERS ///////////////////////////////
 window.onload = init;
@@ -165,6 +166,7 @@ function init() {
       squares[x].textContent = "";
     }
   }
+
 
   board = [
 
@@ -460,7 +462,7 @@ else if (nextMove == "thirdright") {
     turn = turn === "X" ? "O" : "X";
     win = getWinner();
     thirdRightWinner = getThirdRightWinner();
-    
+
     document.getElementById("third-right").classList.remove("nextSquare");
     nextMove = getNextMove(e);
     if (win === "T") {
@@ -703,6 +705,7 @@ let firstLeftWin = false;
   firstLeftWinner = winner;
   console.log("LOCAL WINNER 1");
   board[0] = winner;
+
 }
 });
 

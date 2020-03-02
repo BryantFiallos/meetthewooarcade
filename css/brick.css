@@ -113,7 +113,7 @@ li a:hover:not(.active) {
   user-select: none;
   width: 48px;
   border-color: black;
-  
+
 }
 
 .mini-square:hover {
@@ -186,3 +186,13 @@ p {
 table, td, th {
   border: 1px solid white;
 }
+
+nav a:hover{
+  color: black;
+}
+
+canvas {
+   background: transparent;
+
+   border:3px solid white;
+  }
