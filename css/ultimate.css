@@ -117,7 +117,7 @@ li a:hover:not(.active) {
 }
 
 .mini-square:hover {
-  background-color: darkgreen;
+  background-color: #4CAF50;
 }
 
 .miniwrap {
@@ -127,7 +127,7 @@ li a:hover:not(.active) {
 }
 
 .nextSquare {
-  background-color: green;
+  background-color: #4CAF50;
 
 }
 
