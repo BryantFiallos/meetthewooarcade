@@ -147,7 +147,7 @@ let thirdLeftWinner;
 let thirdMiddleWinner;
 let thirdRightWinner;
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
-const squares = Array.from(document.querySelectorAll("#board div"));
+let squares = Array.from(document.querySelectorAll("#board div"));
 const squares0 = squares[0].textContent;
 const message = document.querySelector("h2");
 ///////////////////// EVENT LISTENERS ///////////////////////////////
@@ -159,6 +159,8 @@ document.getElementById("oFirst").onclick = oFirst;
 document.getElementById("reset-scoreboard").onclick = resetScoreboard;
 ///////////////////// FUNCTIONS /////////////////////////////////////
 function init() {
+
+
   for (x = 0; x < 90; x++) {
     if (x % 10 === 0) {
 
@@ -167,6 +169,86 @@ function init() {
     }
   }
 
+if (squares[0].textContent != "") {
+ squares[0].textContent = "";
+for (var i = 1; i < 10; i++) {
+  var el = document.createElement("div");
+  el.setAttribute('class', 'mini-square');
+  document.getElementById('first-left').appendChild(el);
+}
+}
+
+if (squares[10].textContent != "") {
+ squares[10].textContent = "";
+for (var i = 1; i < 10; i++) {
+  var el = document.createElement("div");
+  el.setAttribute('class', 'mini-square');
+  document.getElementById('first-middle').appendChild(el);
+}
+}
+
+if (squares[20].textContent != "") {
+ squares[20].textContent = "";
+for (var i = 1; i < 10; i++) {
+  var el = document.createElement("div");
+  el.setAttribute('class', 'mini-square');
+  document.getElementById('first-right').appendChild(el);
+}
+}
+
+if (squares[30].textContent != "") {
+ squares[30].textContent = "";
+for (var i = 1; i < 10; i++) {
+  var el = document.createElement("div");
+  el.setAttribute('class', 'mini-square');
+  document.getElementById('second-left').appendChild(el);
+}
+}
+
+if (squares[40].textContent != "") {
+ squares[40].textContent = "";
+for (var i = 1; i < 10; i++) {
+  var el = document.createElement("div");
+  el.setAttribute('class', 'mini-square');
+  document.getElementById('second-middle').appendChild(el);
+}
+}
+
+if (squares[50].textContent != "") {
+ squares[50].textContent = "";
+for (var i = 1; i < 10; i++) {
+  var el = document.createElement("div");
+  el.setAttribute('class', 'mini-square');
+  document.getElementById('second-right').appendChild(el);
+}
+}
+
+if (squares[60].textContent != "") {
+ squares[60].textContent = "";
+for (var i = 1; i < 10; i++) {
+  var el = document.createElement("div");
+  el.setAttribute('class', 'mini-square');
+  document.getElementById('third-left').appendChild(el);
+}
+}
+
+if (squares[70].textContent != "") {
+ squares[70].textContent = "";
+for (var i = 1; i < 10; i++) {
+  var el = document.createElement("div");
+  el.setAttribute('class', 'mini-square');
+  document.getElementById('third-middle').appendChild(el);
+}
+}
+
+if (squares[80].textContent != "") {
+ squares[80].textContent = "";
+for (var i = 1; i < 10; i++) {
+  var el = document.createElement("div");
+  el.setAttribute('class', 'mini-square');
+  document.getElementById('third-right').appendChild(el);
+}
+}
 
   board = [
 
@@ -182,8 +264,28 @@ document.getElementById("third-middle").classList.remove("nextSquare");
 document.getElementById("third-right").classList.remove("nextSquare");
 
 
-  turn = "X";
+  turn = first;
   nextMove = "any"
+  win = null;
+  let firstLeftWin = false;
+  let firstMiddleWin = false;
+  let firstRightWin = false;
+  let secondLeftWin = false;
+  let secondMiddleWin = false;
+  let secondRightWin = false;
+  let thirdLeftWin = false;
+  let thirdMiddleWin = false;
+  let thirdRightWin = false;
+  let firstLeftWinner = false;
+  let firstMiddleWinner = false;
+  let firstRightWinner = false;
+  let secondLeftWinner = false;
+  let secondMiddleWinner = false;
+  let secondRightWinner = false;
+  let thirdLeftWinner = false;
+  let thirdMiddleWinner = false;
+  let thirdRightWinner = false;
+  squares = Array.from(document.querySelectorAll("#board div"));
   render();
 }
 
@@ -202,7 +304,7 @@ function takeTurn(e) {
       return square === e.target;
     });
 
-
+console.log(index);
 
   if (nextMove == "any") {
     if (squares[index].textContent === "") {
@@ -484,6 +586,15 @@ else {
 }
 
 win = getWinner();
+firstLeftWinner = getFirstLeftWinner();
+firstMiddleWinner = getFirstMiddleWinner();
+firstRightWinner = getFirstRightWinner();
+sencondLeftWinner = getSecondLeftWinner();
+secondMiddleWinner = getSecondMiddleWinner();
+secondRightWinner = getSecondRightWinner();
+thirdLeftWinner = getThirdLeftWinner();
+thirdMiddleWinner = getThirdMiddleWinner();
+thirdRightWinner = getThirdRightWinner();
 render();
   }
 }
@@ -941,4 +1052,9 @@ if (!thirdLeftWin && board[81] != undefined && board[82] != undefined && board[8
 
 }
 
+}
+
+
+function playAgain() {
+  location.reload();
 }
