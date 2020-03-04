@@ -177,13 +177,7 @@ Looking for a little inspiration? Here are some cool features you might consider
 * Add square highlighting when selecting a piece to show players what their available moves are on each turn.
 * Implement an AI so that players can play against the computer. It would be really cool if players could choose a difficulty level (i.e., easy, medium, hard, expert), and your AI would play accordingly.
 
-## Deadline
 
-Please read very carefully. Historically, most students lose points on problem sets for simply failing to read the instructions and requirements.
-
-- March 1, 2020, at 11:59pm.
-
-If you submit your problem set at midnight (i.e., March 2, 2020, at 12:00am), it is considered **late**!
 
 ### Submission Requirements
 
